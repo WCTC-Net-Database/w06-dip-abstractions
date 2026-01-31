@@ -46,7 +46,7 @@ GameEngine directly creates and uses concrete classes, making it hard to test or
 ```csharp
 public class GameEngine
 {
-    private CsvFileHandler _fileHandler = new CsvFileHandler(); // Concrete!
+    private CsvFileHandler _fileHandler = new CsvFileHandler("input.csv"); // Concrete!
     private Goblin _enemy = new Goblin(); // Concrete!
 }
 ```
@@ -180,6 +180,49 @@ Create 2+ additional character classes with unique special actions:
 - DIP prepares you for dependency injection in EF Core (Week 9+)
 - Abstract classes are used throughout the final project
 - This completes the SOLID foundation for the semester
+
+---
+
+## Looking Ahead: From IFileHandler to IContext
+
+In Week 4, `IFileHandler` worked great for one entity type (Characters). But what happens when your game needs **multiple entity types**?
+
+**The Problem:**
+```csharp
+// Week 4 approach - separate handlers for each type?
+IFileHandler characterHandler = new JsonFileHandler("characters.json");
+IFileHandler monsterHandler = new JsonFileHandler("monsters.json");
+IFileHandler itemHandler = new JsonFileHandler("items.json");
+// This gets messy fast!
+```
+
+**The Solution (Week 7):**
+```csharp
+// IContext manages ALL entity types in one place
+public interface IContext
+{
+    List<Player> Players { get; set; }
+    List<MonsterBase> Monsters { get; set; }
+    List<Item> Items { get; set; }
+
+    void Read();
+    void Write(Player player);
+    void Write(MonsterBase monster);
+    int SaveChanges();  // Save everything at once!
+}
+```
+
+**Why this matters for the midterm:**
+- The midterm codebase uses `IContext` and `GameContext`
+- `GameContext` is like a "fake DbContext" using JSON files
+- Understanding this pattern is critical for the exam
+- In Week 9, `IContext` becomes the real `DbContext` with EF Core
+
+**The evolution:**
+```
+IFileHandler (Week 4)     →     IContext (Week 7)     →     DbContext (Week 9)
+Single entity type              Multiple entity types        Real database
+```
 
 ---
 
