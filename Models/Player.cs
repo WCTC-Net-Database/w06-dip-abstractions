@@ -1,4 +1,4 @@
-﻿namespace W6_assignment_template.Models
+﻿namespace W06.Models
 {
     public class Player : CharacterBase
     {

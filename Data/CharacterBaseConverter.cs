@@ -1,8 +1,8 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using W6_assignment_template.Models;
+using W06.Models;
 
-namespace W6_assignment_template.Data;
+namespace W06.Data;
 
 public class CharacterBaseConverter : JsonConverter<CharacterBase>
 {
@@ -14,9 +14,9 @@ public class CharacterBaseConverter : JsonConverter<CharacterBase>
             var typeProperty = root.GetProperty("$type").GetString();
             Type type = typeProperty switch
             {
-                "W6_assignment_template.Models.Player" => typeof(Player),
-                "W6_assignment_template.Models.Goblin" => typeof(Goblin),
-                "W6_assignment_template.Models.Ghost" => typeof(Ghost),
+                "W06.Models.Player" => typeof(Player),
+                "W06.Models.Goblin" => typeof(Goblin),
+                "W06.Models.Ghost" => typeof(Ghost),
                 _ => throw new NotSupportedException($"Type {typeProperty} is not supported")
             };
             return (CharacterBase)JsonSerializer.Deserialize(root.GetRawText(), type, options);

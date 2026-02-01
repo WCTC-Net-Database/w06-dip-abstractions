@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using W6_assignment_template.Data;
-using W6_assignment_template.Services;
+using W06.Data;
+using W06.Services;
 
-namespace W6_assignment_template
+namespace W06
 {
     class Program
     {

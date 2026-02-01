@@ -1,6 +1,6 @@
-﻿using W6_assignment_template.Interfaces;
+﻿using W06.Interfaces;
 
-namespace W6_assignment_template.Models
+namespace W06.Models
 {
     public class Ghost : CharacterBase, IFlyable
     {

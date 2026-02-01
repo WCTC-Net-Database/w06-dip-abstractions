@@ -1,7 +1,7 @@
 using System.Text.Json;
-using W6_assignment_template.Models;
+using W06.Models;
 
-namespace W6_assignment_template.Data
+namespace W06.Data
 {
     public class DataContext : IContext
     {

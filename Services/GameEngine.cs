@@ -1,7 +1,7 @@
-using W6_assignment_template.Data;
-using W6_assignment_template.Models;
+using W06.Data;
+using W06.Models;
 
-namespace W6_assignment_template.Services
+namespace W06.Services
 {
     /// <summary>
     /// GameEngine demonstrates Dependency Inversion Principle (DIP).
